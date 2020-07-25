@@ -3,7 +3,7 @@
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+				<div class="sidebar-brand-text mx-3">KOPERASI</sup></div>
 			</a>
 			<hr class="sidebar-divider my-0">
 			<li class="nav-item <?= $aktif == 'dashboard' ? 'active' : '' ?>">
@@ -17,47 +17,41 @@
 				Master
 			</div>
 
-			<li class="nav-item <?= $aktif == 'barang' ? 'active' : '' ?>">
-				<a class="nav-link" href="<?= base_url('barang') ?>">
-					<i class="fas fa-fw fa-box"></i>
-					<span>Master Barang</span></a>
+			<li class="nav-item <?= $aktif == 'peternak' ? 'active' : '' ?>">
+				<a class="nav-link" href="<?= base_url('peternak') ?>">
+					<i class="fas fa-fw fa-user"></i>
+					<span>Data Peternak</span></a>
 			</li>
 
-			<li class="nav-item <?= $aktif == 'customer' ? 'active' : '' ?>">
-				<a class="nav-link" href="<?= base_url('customer') ?>">
+			<li class="nav-item <?= $aktif == 'pos' ? 'active' : '' ?>">
+				<a class="nav-link" href="<?= base_url('pos') ?>">
 					<i class="fas fa-fw fa-user"></i>
-					<span>Master Customer</span></a>
-			</li>
-
-			<li class="nav-item <?= $aktif == 'supplier' ? 'active' : '' ?>">
-				<a class="nav-link" href="<?= base_url('supplier') ?>">
-					<i class="fas fa-fw fa-user"></i>
-					<span>Master Supplier</span></a>
+					<span>Data Pos Penampungan</span></a>
 			</li>
 
 			<li class="nav-item <?= $aktif == 'petugas' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('petugas') ?>">
 					<i class="fas fa-fw fa-users"></i>
-					<span>Master Petugas</span></a>
+					<span>Data Petugas</span></a>
 			</li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 	
 			<div class="sidebar-heading">
-				Transaksi
+				Setoran
 			</div>
 
 			<li class="nav-item <?= $aktif == 'penerimaan' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('penerimaan') ?>">
 					<i class="fas fa-fw fa-file-invoice"></i>
-					<span>Transaksi Penerimaan</span></a>
+					<span>Setoran Pagi</span></a>
 			</li>
 
 			<li class="nav-item <?= $aktif == 'pengeluaran' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('pengeluaran') ?>">
 					<i class="fas fa-fw fa-file-invoice"></i>
-					<span>Transaksi Pengeluaran</span></a>
+					<span>Setoran Siang</span></a>
 			</li>
 
 			<hr class="sidebar-divider">
@@ -73,11 +67,6 @@
 						<span>Manajemen Pengguna</span></a>
 				</li>
 
-				<li class="nav-item <?= $aktif == 'toko' ? 'active' : '' ?>">
-					<a class="nav-link" href="<?= base_url('toko') ?>">
-						<i class="fas fa-fw fa-building"></i>
-						<span>Profil Toko</span></a>
-				</li>
 				<!-- Divider -->
 			<?php endif; ?>
 			<hr class="sidebar-divider d-none d-md-block">

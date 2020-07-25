@@ -17,22 +17,24 @@
 			<thead>
 				<tr>
 					<td width="20px">No</td>
-					<td>Kode Customer</td>
-					<td>Nama Customer</td>
+					<td>Kode Peternak</td>
+					<td>Nama Peternak</td>
 					<td>Telepon</td>
-					<td>Email</td>
+					<td>jumlahsapi</td>
 					<td>Alamat</td>
+					<td>Kodepos</td>
 				</tr>
 			</thead>
 			<tbody>
-			<?php foreach ($all_customer as $customer): ?>
+			<?php foreach ($all_peternak as $peternak): ?>
 				<tr>
 					<td><?= $no++ ?></td>
-					<td><?= $customer->kode ?></td>
-					<td><?= $customer->nama ?></td>
-					<td><?= $customer->telepon ?></td>
-					<td><?= $customer->email ?></td>
-					<td><?= $customer->alamat ?></td>
+					<td><?= $peternak->kode ?></td>
+					<td><?= $peternak->nama ?></td>
+					<td><?= $peternak->telepon ?></td>
+					<td><?= $peternak->jumlahsapi ?></td>
+					<td><?= $peternak->alamat ?></td>
+					<td><?= $peternak->kodepos ?></td>
 				</tr>	
 			<?php endforeach ?>
 			</tbody>

@@ -31,25 +31,45 @@
 							<div class="card-body">
 								<form action="<?= base_url('petugas/proses_tambah') ?>" id="form-tambah" method="POST">
 									<div class="form-row">
-										<div class="form-group col-md-6">
-											<label for="kode"><strong>Kode</strong></label>
-											<input type="text" name="kode" placeholder="Masukkan Kode Petugas" autocomplete="off"  class="form-control" required value="PETUGAS - <?= mt_rand(10, 99) ?>" maxlength="8" readonly>
+											<div class="form-group col-md-6">
+												<label for="kode"><strong>Kode</strong></label>
+												<input type="text" name="kode" placeholder="Masukkan Kode" autocomplete="off"  class="form-control" required value="PTGS<?= mt_rand(100, 999) ?>" maxlength="8" readonly>
+											</div>
+											<div class="form-group col-md-6">
+												<label for="nama"><strong>Nama</strong></label>
+												<input type="text" name="nama" placeholder="Masukkan Nama" autocomplete="off"  class="form-control" required>
+											</div>
 										</div>
-										<div class="form-group col-md-6">
-											<label for="nama"><strong>Nama</strong></label>
-											<input type="text" name="nama" placeholder="Masukkan Nama Petugas" autocomplete="off"  class="form-control" required>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="username"><strong>Username</strong></label>
+												<input type="text" name="username" placeholder="Masukkan Username" autocomplete="off"  class="form-control" required>
+											</div>
+											<div class="form-group col-md-6">
+												<label for="password"><strong>Password</strong></label>
+												<input type="text" name="password" placeholder="Masukkan Password" autocomplete="off"  class="form-control" required>
+											</div>
 										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											<label for="username"><strong>Username</strong></label>
-											<input type="text" name="username" placeholder="Masukkan Username" autocomplete="off"  class="form-control" required readonly>
+										<div class="form-row">
+											<div class="form-group col-md-4">
+												<label for="telepon"><strong>Telepon</strong></label>
+												<input type="number" name="telepon" placeholder="Masukkan No Telepon" autocomplete="off"  class="form-control" required>
+											</div>
 										</div>
-										<div class="form-group col-md-6">
-											<label for="password"><strong>Password</strong></label>
-											<input type="text" name="password" placeholder="Masukkan Password" autocomplete="off"  class="form-control" required>
+										<div class="form-group">
+											<label for="alamat"><strong>Alamat</strong></label>
+											<textarea name="alamat" id="alamat" style="resize: none;" class="form-control" placeholder="Masukkan Alamat"></textarea>
 										</div>
-									</div>
+										<div class="form-group">
+											<label for="kodepos"><strong>Alamat Pos</strong></label>
+											<select name="kodepos" class="form-control">
+												<?php foreach ($pos as $pos) : ?>
+													<option value="<?= $pos->kodepos ?>"><?= $pos->alamatpos ?></option>
+												<?php endforeach ?>
+											</select>
+										</select>
+
+										</div>
 									<hr>
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>

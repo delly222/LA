@@ -8,6 +8,7 @@ class Petugas extends CI_Controller{
 		if($this->session->login['role'] != 'petugas' && $this->session->login['role'] != 'admin') redirect();
 		$this->data['aktif'] = 'petugas';
 		$this->load->model('M_petugas', 'm_petugas');
+		$this->load->model('M_pos', 'm_pos');
 	}
 
 	public function index(){
@@ -25,6 +26,7 @@ class Petugas extends CI_Controller{
 		}
 
 		$this->data['title'] = 'Tambah Petugas';
+		$this->data['pos'] = $this->m_pos->lihat_spl();
 
 		$this->load->view('petugas/tambah', $this->data);
 	}
@@ -40,6 +42,9 @@ class Petugas extends CI_Controller{
 			'nama' => $this->input->post('nama'),
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
+			'telepon' => $this->input->post('telepon'),
+			'alamat' => $this->input->post('alamat'),
+			'poskode' => $this->input->post('kodepos'),
 		];
 
 		if($this->m_petugas->tambah($data)){
@@ -51,19 +56,20 @@ class Petugas extends CI_Controller{
 		}
 	}
 
-	public function ubah($id){
+	public function ubah($kode){
 		if ($this->session->login['role'] == 'petugas'){
 			$this->session->set_flashdata('error', 'Ubah data hanya untuk admin!');
 			redirect('dashboard');
 		}
 
 		$this->data['title'] = 'Ubah Petugas';
-		$this->data['petugas'] = $this->m_petugas->lihat_id($id);
+		$this->data['petugas'] = $this->m_petugas->lihat_id($kode);
+		$this->data['pos'] = $this->m_pos->lihat_spl();
 
 		$this->load->view('petugas/ubah', $this->data);
 	}
 
-	public function proses_ubah($id){
+	public function proses_ubah($kode){
 		if ($this->session->login['role'] == 'petugas'){
 			$this->session->set_flashdata('error', 'Ubah data hanya untuk admin!');
 			redirect('dashboard');
@@ -74,9 +80,12 @@ class Petugas extends CI_Controller{
 			'nama' => $this->input->post('nama'),
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
+			'telepon' => $this->input->post('telepon'),
+			'alamat' => $this->input->post('alamat'),
+			'poskode' => $this->input->post('kodepos'),
 		];
 
-		if($this->m_petugas->ubah($data, $id)){
+		if($this->m_petugas->ubah($data, $kode)){
 			$this->session->set_flashdata('success', 'Data Petugas <strong>Berhasil</strong> Diubah!');
 			redirect('petugas');
 		} else {
@@ -85,13 +94,13 @@ class Petugas extends CI_Controller{
 		}
 	}
 
-	public function hapus($id){
+	public function hapus($kode){
 		if ($this->session->login['role'] == 'petugas'){
 			$this->session->set_flashdata('error', 'Hapus data hanya untuk admin!');
 			redirect('dashboard');
 		}
 
-		if($this->m_petugas->hapus($id)){
+		if($this->m_petugas->hapus($kode)){
 			$this->session->set_flashdata('success', 'Data Petugas <strong>Berhasil</strong> Dihapus!');
 			redirect('petugas');
 		} else {

@@ -44,14 +44,15 @@
 					<div class="card-header"><strong>Daftar Pengeluaran</strong></div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<td>No</td>
-										<td>No Keluar</td>
+										<td>No Terima</td>
 										<td>Nama Petugas</td>
-										<td>Nama Customer</td>
-										<td>Tanggal Keluar</td>
+										<td>Nama Peternak</td>
+										<td>Tanggal Terima</td>
+										<td>jumlah setoran</td>
 										<td>Aksi</td>
 									</tr>
 								</thead>
@@ -59,13 +60,14 @@
 									<?php foreach ($all_pengeluaran as $pengeluaran): ?>
 										<tr>
 											<td><?= $no++ ?></td>
-											<td><?= $pengeluaran->no_keluar ?></td>
-											<td><?= $pengeluaran->nama_petugas ?></td>
-											<td><?= $pengeluaran->nama_customer ?></td>
-											<td><?= $pengeluaran->tgl_keluar ?> <?= $pengeluaran->jam_keluar ?></td>
+											<td><?= $pengeluaran->kode ?></td>
+											<td><?= $pengeluaran->nama ?></td>
+											<td><?= $pengeluaran->nama ?></td>
+											<td><?= $pengeluaran->tanggal ?> </td>
+											<td><?= $pengeluaran->jumlahsetoran ?></td>											
 											<td>
-												<a href="<?= base_url('pengeluaran/detail/' . $pengeluaran->no_keluar) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-												<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('pengeluaran/hapus/' . $pengeluaran->no_keluar) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+												<a href="<?= base_url('pengeluaran/detail/' . $pengeluaran->kode) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+												<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('pengeluaran/hapus/' . $pengeluaran->kode) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 									<?php endforeach ?>

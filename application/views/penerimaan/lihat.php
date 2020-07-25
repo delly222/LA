@@ -50,8 +50,9 @@
 										<td>No</td>
 										<td>No Terima</td>
 										<td>Nama Petugas</td>
-										<td>Nama Supplier</td>
+										<td>Nama Peternak</td>
 										<td>Tanggal Terima</td>
+										<td>jumlah setoran</td>
 										<td>Aksi</td>
 									</tr>
 								</thead>
@@ -59,13 +60,14 @@
 									<?php foreach ($all_penerimaan as $penerimaan): ?>
 										<tr>
 											<td><?= $no++ ?></td>
-											<td><?= $penerimaan->no_terima ?></td>
-											<td><?= $penerimaan->nama_petugas ?></td>
-											<td><?= $penerimaan->nama_supplier ?></td>
-											<td><?= $penerimaan->tgl_terima ?> <?= $penerimaan->jam_terima ?></td>
+											<td><?= $penerimaan->kode ?></td>
+											<td><?= $penerimaan->nama ?></td>
+											<td><?= $penerimaan->nama ?></td>
+											<td><?= $penerimaan->tanggal ?> </td>
+											<td><?= $penerimaan->jumlahsetoran ?></td>											
 											<td>
-												<a href="<?= base_url('penerimaan/detail/' . $penerimaan->no_terima) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-												<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('penerimaan/hapus/' . $penerimaan->no_terima) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+												<a href="<?= base_url('penerimaan/detail/' . $penerimaan->kode) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+												<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('penerimaan/hapus/' . $penerimaan->kode) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 									<?php endforeach ?>

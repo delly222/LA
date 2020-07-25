@@ -39,43 +39,30 @@
 					
 					<div class="row">
 
+			           
 			            <!-- Earnings (Monthly) Card Example -->
 			            <div class="col-xl-3 col-md-6 mb-4">
-			              <div class="card border-left-primary shadow h-100 py-2">
-			                <div class="card-body">
-			                  <div class="row no-gutters align-items-center">
-			                    <div class="col mr-2">
-			                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Barang</div>
-			                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_barang ?></div>
-			                    </div>
-			                    <div class="col-auto">
-			                      <i class="fas fa-box fa-2x text-gray-300"></i>
-			                    </div>
-			                  </div>
-			                </div>
-			              </div>
-			            </div>
-
-			            <!-- Earnings (Monthly) Card Example -->
-			            <div class="col-xl-3 col-md-6 mb-4">
-			              <div class="card border-left-success shadow h-100 py-2">
-			                <div class="card-body">
-			                  <div class="row no-gutters align-items-center">
-			                    <div class="col mr-2">
-			                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Petugas</div>
-			                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_petugas ?></div>
-			                    </div>
-			                    <div class="col-auto">
-			                      <i class="fas fa-users fa-2x text-gray-300"></i>
-			                    </div>
-			                  </div>
-			                </div>
-			              </div>
+							<div class="card border-left-success shadow h-100 py-2">
+						  		<a href="<?php echo site_url('petugas/index') ?>">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">	
+											<div class="col mr-2">
+												<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Petugas</div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_petugas ?></div>
+											</div>
+										<div class="col-auto">
+									<i class="fas fa-users fa-2x text-gray-300"></i>
+									</div>
+									</div>
+									</div>
+								</a>
+			              	</div>
 			            </div>
 
 			            <!-- Earnings (Monthly) Card Example -->
 			            <div class="col-xl-3 col-md-6 mb-4">
 			              <div class="card border-left-info shadow h-100 py-2">
+						  <a href="<?php echo site_url('petugas/index') ?>">
 			                <div class="card-body">
 			                  <div class="row no-gutters align-items-center">
 			                    <div class="col mr-2">
@@ -91,12 +78,14 @@
 			                    </div>
 			                  </div>
 			                </div>
+							</a>
 			              </div>
 			            </div>
 
 			            <!-- Pending Requests Card Example -->
 			            <div class="col-xl-3 col-md-6 mb-4">
 			              <div class="card border-left-warning shadow h-100 py-2">
+						  <a href="<?php echo site_url('petugas/index') ?>">
 			                <div class="card-body">
 			                  <div class="row no-gutters align-items-center">
 			                    <div class="col mr-2">
@@ -108,44 +97,10 @@
 			                    </div>
 			                  </div>
 			                </div>
+							</a>
 			              </div>
 			            </div>
 			        </div>
-
-			        <div class="row">
-			          	<div class="col-md-6">
-							<div class="card shadow">
-								<div class="card-header"><strong>Profil Toko</strong></div>
-								<div class="card-body">
-									<strong>Nama Toko : </strong><br>
-									<input  type="text" value="<?= $toko->nama_toko ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Nama Pemilik : </strong><br>
-									<input  type="text" value="<?= $toko->nama_pemilik ?>" readonly class="form-control mt-2 mb-2">
-									<strong>No Telepon : </strong><br>
-									<input  type="text" value="<?= $toko->no_telepon ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Alamat : </strong><br>
-									<input  type="text" value="<?= $toko->alamat ?>" readonly class="form-control mt-2">
-								</div>				
-							</div>
-			          	</div>
-			          	<div class="col-md-6">
-							<div class="card shadow">
-								<div class="card-header"><strong>User Sedang Login</strong></div>
-								<div class="card-body">
-									<strong>Nama : </strong><br>
-									<input type="text" value="<?= $this->session->login['nama'] ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Username : </strong><br>
-									<input type="text" value="<?= $this->session->login['username'] ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Role : </strong><br>
-									<input type="text" value="<?= $this->session->login['role'] ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Jam Login : </strong><br>
-									<input type="text" value="<?= $this->session->login['jam_masuk'] ?>" readonly class="form-control mt-2">
-								</div>				
-							</div>
-			          	</div>
-			        </div>
-
-				</div>
 			</div>
 			<!-- load footer -->
 			<?php $this->load->view('partials/footer.php') ?>

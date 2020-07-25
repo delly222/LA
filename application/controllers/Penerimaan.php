@@ -7,55 +7,44 @@ class Penerimaan extends CI_Controller{
 		parent::__construct();
 		date_default_timezone_set('Asia/Jakarta');
 		$this->data['aktif'] = 'penerimaan';
-		$this->load->model('M_barang', 'm_barang');
-		$this->load->model('M_supplier', 'm_supplier');
-		$this->load->model('M_penerimaan', 'm_penerimaan');
-		$this->load->model('M_detail_terima', 'm_detail_terima');
+		$this->load->model('M_historisetoran', 'm_historisetoran');
+		$this->load->model('M_petugas', 'm_petugas');
+		$this->load->model('M_peternak', 'm_peternak');
 	}
 
 	public function index(){
-		$this->data['title'] = 'Transaksi Penerimaan';
-		$this->data['all_penerimaan'] = $this->m_penerimaan->lihat();
+		$this->data['title'] = 'Setoran Pagi';
+		$this->data['all_penerimaan'] = $this->m_historisetoran->lihat_p();
 		$this->data['no'] = 1;
+		$this->load->model('M_petugas', 'm_petugas');
+		$this->load->model('M_peternak', 'm_peternak');
 
 		$this->load->view('penerimaan/lihat', $this->data);
 	}
 
 	public function tambah(){
 		$this->data['title'] = 'Tambah Transaksi';
-		$this->data['all_barang'] = $this->m_barang->lihat_stok();
-		$this->data['all_supplier'] = $this->m_supplier->lihat_spl();
-
+		$data['peternak'] = $this->m_peternak->lihat_spl();
 		$this->load->view('penerimaan/tambah', $this->data);
 	}
 
 	public function proses_tambah(){
-		$jumlah_barang_diterima = count($this->input->post('nama_barang_hidden'));
-
-		$data_terima = [
-			'no_terima' => $this->input->post('no_terima'),
-			'tgl_terima' => $this->input->post('tgl_terima'),
-			'jam_terima' => $this->input->post('jam_terima'),
-			'nama_supplier' => $this->input->post('nama_supplier'),
-			'nama_petugas' => $this->input->post('nama_petugas'),
+		$data = [
+			'kode' => $this->input->post('kode'),
+			'tanggal' => $this->input->post('tanggal'),
+			'waktu' => $this->input->post('waktu'),
+			'idpetugas' => $this->session->login['kode'],
+			'idpeternak' => $this->input->post('idpeternak'),
+			'jumlahsetoran' => $this->input->post('jumlahsetoran'),
 		];
-
-		$data_detail_terima = [];
-
-		for($i = 0; $i < $jumlah_barang_diterima; $i++){
-			array_push($data_detail_terima, ['no_terima' => $this->input->post('no_terima')]);
-			$data_detail_terima[$i]['nama_barang'] = $this->input->post('nama_barang_hidden')[$i];
-			$data_detail_terima[$i]['jumlah'] = $this->input->post('jumlah_hidden')[$i];
-			$data_detail_terima[$i]['satuan'] = $this->input->post('satuan_hidden')[$i];
-		}
-
-		if($this->m_penerimaan->tambah($data_terima) && $this->m_detail_terima->tambah($data_detail_terima)){
-			for ($i=0; $i < $jumlah_barang_diterima ; $i++) { 
-				$this->m_barang->plus_stok($data_detail_terima[$i]['jumlah'], $data_detail_terima[$i]['nama_barang']) or die('gagal min stok');
-			}
-			$this->session->set_flashdata('success', 'Invoice <strong>Penerimaan</strong> Berhasil Dibuat!');
+		if($this->m_historisetoran->tambah($data)){
+			$this->session->set_flashdata('success', 'Data Peternak <strong>Berhasil</strong> Ditambahkan!');
+			redirect('penerimaan');
+		} else {
+			$this->session->set_flashdata('error', 'Data Peternak <strong>Gagal</strong> Ditambahkan!');
 			redirect('penerimaan');
 		}
+
 	}
 
 	public function detail($no_terima){

@@ -9,6 +9,7 @@
 	<div class="row">
 		<div class="col text-center">
 			<h3 class="h3 text-dark"><?= $title ?></h3>
+			<!-- <h4 class="h4 text-dark "><strong><?= $perusahaan->nama_perusahaan ?></strong></h4> -->
 		</div>
 	</div>
 	<hr>
@@ -17,20 +18,18 @@
 			<thead>
 				<tr>
 					<td>No</td>
-					<td>Kode Barang</td>
-					<td>Nama Barang</td>
-					<td>Stok</td>
+					<td>Kode Pos</td>
+					<td>Alamat pos</td>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ($all_barang as $barang): ?>
-					<tr>
-						<td><?= $no++ ?></td>
-						<td><?= $barang->kode_barang ?></td>
-						<td><?= $barang->nama_barang ?></td>
-						<td><?= $barang->stok ?> <?= strtoupper($barang->satuan) ?></td>
-					</tr>
-				<?php endforeach ?>
+			<?php foreach ($all_pos as $pos): ?>
+				<tr>
+					<td><?= $no++ ?></td>
+					<td><?= $pos->kode ?></td>
+					<td><?= $pos->nama ?></td>
+				</tr>	
+			<?php endforeach ?>
 			</tbody>
 		</table>
 	</div>

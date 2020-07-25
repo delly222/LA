@@ -55,6 +55,11 @@
 										<td>Username</td>
 										<?php if ($this->session->login['role'] == 'admin'): ?>
 											<td>Password</td>
+										<?php  endif ?>
+										<td>telepon</td>
+										<td>alamat</td>
+										<td>kodepos</td>
+										<?php if ($this->session->login['role'] == 'admin'): ?>
 											<td>Aksi</td>
 										<?php  endif ?>
 									</tr>
@@ -68,11 +73,16 @@
 											<td><?= $petugas->username ?></td>
 											<?php if($this->session->login['role'] == 'admin'): ?>
 												<td><?= $petugas->password ?></td>
-												<td>
-													<a href="<?= base_url('petugas/ubah/' . $petugas->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
-													<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('petugas/hapus/' . $petugas->id) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-												</td>	
 											<?php endif ?>
+											<td><?= $petugas->telepon ?></td>
+											<td><?= $petugas->alamat ?></td>
+											<td><?= $petugas->alamatpos ?></td>
+											<?php if ($this->session->login['role'] == 'admin'): ?>
+										<td>
+											<a href="<?= base_url('petugas/ubah/' . $petugas->kode) ?>" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
+											<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('petugas/hapus/' . $petugas->kode) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+										</td>
+										<?php endif ?>
 										</tr>
 									<?php endforeach ?>
 								</tbody>

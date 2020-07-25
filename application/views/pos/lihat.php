@@ -10,7 +10,7 @@
 		<?php $this->load->view('partials/sidebar.php') ?>
 
 		<div id="content-wrapper" class="d-flex flex-column">
-			<div id="content" data-url="<?= base_url('customer') ?>">
+			<div id="content" data-url="<?= base_url('pos') ?>">
 				<!-- load Topbar -->
 				<?php $this->load->view('partials/topbar.php') ?>
 
@@ -21,8 +21,8 @@
 					</div>
 					<div class="float-right">
 						<?php if ($this->session->login['role'] == 'admin'): ?>
-							<a href="<?= base_url('customer/export') ?>" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
-							<a href="<?= base_url('customer/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
+							<a href="<?= base_url('pos/export') ?>" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
+							<a href="<?= base_url('pos/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
 						<?php endif ?>
 					</div>
 				</div>
@@ -43,36 +43,30 @@
 					</div>
 				<?php endif ?>
 				<div class="card shadow">
-					<div class="card-header"><strong>Daftar Customer</strong></div>
+					<div class="card-header"><strong>Daftar Pos</strong></div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<td>No</td>
-										<td>Kode Customer</td>
-										<td>Nama Customer</td>
-										<td>Telepon</td>
-										<td>Email</td>
-										<td>Alamat</td>
+										<td>Kode </td>
+										<td>Nama </td>
 										<?php if ($this->session->login['role'] == 'admin'): ?>
 											<td>Aksi</td>
 										<?php endif ?>
 									</tr>
 								</thead>
 								<tbody>
-								<?php foreach ($all_customer as $customer): ?>
+								<?php foreach ($all_pos as $pos): ?>
 									<tr>
 										<td><?= $no++ ?></td>
-										<td><?= $customer->kode ?></td>
-										<td><?= $customer->nama ?></td>
-										<td><?= $customer->telepon ?></td>
-										<td><?= $customer->email ?></td>
-										<td><?= $customer->alamat ?></td>
+										<td><?= $pos->kodepos ?></td>
+										<td><?= $pos->alamatpos ?></td>
 										<?php if ($this->session->login['role'] == 'admin'): ?>
 										<td>
-											<a href="<?= base_url('customer/ubah/' . $customer->kode) ?>" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
-											<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('customer/hapus/' . $customer->kode) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+											<a href="<?= base_url('pos/ubah/' . $pos->kodepos) ?>" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>	
+											<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('pos/hapus/' . $pos->kodepos) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 										</td>
 										<?php endif ?>
 									</tr>	

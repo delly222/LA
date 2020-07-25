@@ -16,20 +16,27 @@
 	<div class="row">
 		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 			<thead>
-				<tr>
-					<td>No</td>
-					<td>Kode</td>
-					<td>Nama</td>
-					<td>Username</td>
+			<tr>
+					<td width="20px">No</td>
+					<td>Kode Peternak</td>
+					<td>Nama Peternak</td>
+					<td>username</td>
+					<td>password</td>
+					<td>Telepon</td>
+					<td>Alamat</td>
+					<td>Kodepos</td>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ($all_petugas as $petugas): ?>
-					<tr>
-						<td><?= $no++ ?></td>
-						<td><?= $petugas->kode ?></td>
-						<td><?= $petugas->nama ?></td>
-						<td><?= $petugas->username ?></td>
+			<?php foreach ($all_petugas as $petugas): ?>
+				<tr>
+					<td><?= $no++ ?></td>
+					<td><?= $petugas->kode ?></td>
+					<td><?= $petugas->nama ?></td>
+					<td><?= $petugas->telepon ?></td>
+					<td><?= $petugas->jumlahsapi ?></td>
+					<td><?= $petugas->alamat ?></td>
+					<td><?= $petugas->kodepos ?></td>
 					</tr>
 				<?php endforeach ?>
 			</tbody>

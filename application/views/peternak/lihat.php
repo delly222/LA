@@ -10,7 +10,7 @@
 		<?php $this->load->view('partials/sidebar.php') ?>
 
 		<div id="content-wrapper" class="d-flex flex-column">
-			<div id="content" data-url="<?= base_url('supplier') ?>">
+			<div id="content" data-url="<?= base_url('peternak') ?>">
 				<!-- load Topbar -->
 				<?php $this->load->view('partials/topbar.php') ?>
 
@@ -21,8 +21,8 @@
 					</div>
 					<div class="float-right">
 						<?php if ($this->session->login['role'] == 'admin'): ?>
-							<a href="<?= base_url('supplier/export') ?>" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
-							<a href="<?= base_url('supplier/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
+							<a href="<?= base_url('peternak/export') ?>" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
+							<a href="<?= base_url('peternak/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
 						<?php endif ?>
 					</div>
 				</div>
@@ -43,36 +43,40 @@
 					</div>
 				<?php endif ?>
 				<div class="card shadow">
-					<div class="card-header"><strong>Daftar Supplier</strong></div>
+					<div class="card-header"><strong>Daftar Peternak</strong></div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<td>No</td>
-										<td>Kode Supplier</td>
-										<td>Nama Supplier</td>
+										<td>Kode Peternak</td>
+										<td>Nama Peternak</td>
 										<td>Telepon</td>
-										<td>Email</td>
+										<td>Jumlah sapi</td>
 										<td>Alamat</td>
+										<td>Alamat Pos</td>
+										<td>Kondisi Susu</td>
 										<?php if ($this->session->login['role'] == 'admin'): ?>
 											<td>Aksi</td>
 										<?php endif ?>
 									</tr>
 								</thead>
 								<tbody>
-								<?php foreach ($all_supplier as $supplier): ?>
+								<?php foreach ($all_peternak as $peternak): ?>
 									<tr>
 										<td><?= $no++ ?></td>
-										<td><?= $supplier->kode ?></td>
-										<td><?= $supplier->nama ?></td>
-										<td><?= $supplier->telepon ?></td>
-										<td><?= $supplier->email ?></td>
-										<td><?= $supplier->alamat ?></td>
+										<td><?= $peternak->kode ?></td>
+										<td><?= $peternak->nama ?></td>
+										<td><?= $peternak->telepon ?></td>
+										<td><?= $peternak->jumlahsapi ?></td>
+										<td><?= $peternak->alamat ?></td>
+										<td><?= $peternak->alamatpos ?></td>
+										<td><?= $peternak->kondisi ?></td>
 										<?php if ($this->session->login['role'] == 'admin'): ?>
 										<td>
-											<a href="<?= base_url('supplier/ubah/' . $supplier->kode) ?>" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
-											<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('supplier/hapus/' . $supplier->kode) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+											<a href="<?= base_url('peternak/ubah/' . $peternak->kode) ?>" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
+											<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('peternak/hapus/' . $peternak->kode) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 										</td>
 										<?php endif ?>
 									</tr>	

@@ -1,7 +1,7 @@
 <?php
 
-class M_supplier extends CI_Model{
-	protected $_table = 'supplier';
+class M_kualitas extends CI_Model{
+	protected $_table = 'kualitassusu';
 
 	public function lihat(){
 		$query = $this->db->get($this->_table);
@@ -14,7 +14,7 @@ class M_supplier extends CI_Model{
 	}
 
 	public function lihat_spl(){
-		$query = $this->db->select('nama');
+		$query = $this->db->select('kodesusu, kondisi');
 		$query = $this->db->get($this->_table);
 		return $query->result();
 	}

@@ -7,16 +7,17 @@ class Pengeluaran extends CI_Controller{
 		parent::__construct();
 		date_default_timezone_set('Asia/Jakarta');
 		$this->data['aktif'] = 'pengeluaran';
-		$this->load->model('M_barang', 'm_barang');
-		$this->load->model('M_customer', 'm_customer');
-		$this->load->model('M_pengeluaran', 'm_pengeluaran');
-		$this->load->model('M_detail_keluar', 'm_detail_keluar');
+		$this->load->model('M_historisetoran', 'm_historisetoran');
+		$this->load->model('M_petugas', 'm_petugas');
+		$this->load->model('M_peternak', 'm_peternak');
 	}
 
 	public function index(){
-		$this->data['title'] = 'Transaksi Pengeluaran';
-		$this->data['all_pengeluaran'] = $this->m_pengeluaran->lihat();
+		$this->data['title'] = 'Setoran Siang';
+		$this->data['all_pengeluaran'] = $this->m_historisetoran->lihat_s();
 		$this->data['no'] = 1;
+		$this->load->model('M_petugas', 'm_petugas');
+		$this->load->model('M_peternak', 'm_peternak');
 
 		$this->load->view('pengeluaran/lihat', $this->data);
 	}
